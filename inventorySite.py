@@ -1,7 +1,7 @@
 # This class creates InventorySite objects, assigning them names and an inventory list
 
 class InventorySite:
-    
+
 
     # Constructor for InventorySite objects
     def __init__(self, siteName):
@@ -22,7 +22,7 @@ class InventorySite:
     # Adds item to the site inventory
     def addToInventory(self, item):
         self._inventoryList.append(item) # adds item to inventory list
-        self._inventoryList.sort() # sorts list to alphabetic order
+        self._inventoryList.sort(key=lambda item: item._name) # sorts list to alphabetic order
 
 
     # Returns site inventory list

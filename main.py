@@ -22,11 +22,14 @@ for item in inventory:
 
 # Logistics program, allows user to create, edit and view Inventory sites and products
 def main():
-    print("Hello! Welcome to Geek imporium!")
-    print("What are your logistical desires today? Please select from the follwing:")
-    print('CREATE; create an item or inventory site \
-            EDIT; edit item name or quantity or change site name \
-            DELETE; remove an item or site from system WARNING deleting a site deletes all of its inventory \
-            VIEW; view inventory for specified site or for all sites \
-            TRANSFER; transfer items from one site to another \
-            EXIT; exit from the system')
+    print("\nHello! Welcome to Geek Emporium!\n")
+    print("What are your logistical desires today? Please select from the following: \n")
+    print("CREATE;      create an item or inventory site \n"
+            "EDIT;      edit item name or quantity or change site name \n"
+            "DELETE;        remove an item or site from system WARNING deleting a site deletes all of its inventory \n"
+            "VIEW;      view inventory for specified site or for all sites \n"
+            "TRANSFER;      transfer items from one site to another \n"
+            "EXIT;      exit from the system\n")
+
+
+main()
