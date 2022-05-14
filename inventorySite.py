@@ -1,8 +1,7 @@
 # This class creates InventorySite objects, assigning them names and an inventory list
 
 class InventorySite:
-
-    from inventoryItem import *
+    
 
     # Constructor for InventorySite objects
     def __init__(self, siteName):
@@ -29,10 +28,3 @@ class InventorySite:
     # Returns site inventory list
     def getSiteInventory(self):
         return self._inventoryList
-
-
-    # Prints every single item within the site's inventory list
-    def printSiteInventory(self):
-        print("Inventory for ", self.siteName)
-        for item in self._inventoryList:
-            print(item.name,"Quantity: " item.quantity "\n")
