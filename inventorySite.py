@@ -2,6 +2,8 @@
 
 class InventorySite:
 
+    from inventoryItem import *
+
     # Constructor for InventorySite objects
     def __init__(self, siteName):
         self._name = siteName
