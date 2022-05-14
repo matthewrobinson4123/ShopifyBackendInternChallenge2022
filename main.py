@@ -11,7 +11,7 @@ from inventorySite import InventorySite
 
 
 # sample items to test with
-inventory = [InventoryItem("Warhammer Space Marmines", 42), InventoryItem("Lego Star Destroyer", 5), InventoryItem("Settlers of Catan", 16)]
+inventory = [InventoryItem("Warhammer Space Marines", 42), InventoryItem("Lego Star Destroyer", 5), InventoryItem("Settlers of Catan", 16)]
 
 # Inistialize system
 sites = [InventorySite("Geekdom")]
