@@ -130,7 +130,6 @@ def create():
         else:
             print("Invalid entry. Please try again. \n")
 
-        break # Return to menu
     
 
 
@@ -139,23 +138,75 @@ def create():
 def edit():
     while(True):
 
-        userInput = input("Would you like to edit a SITE or ITEM? or EXIT \n")
+        userInput = input("Would you like to change the NAME or QUANTITY of an item? or EXIT\n")
 
-        # User wishes to edit site
-        if userInput.lower() == "site":
-
-
-
-        # User wishes to exit to menu
-        elif userInput.lower() == "exit":
+        if userInput.lower() == "exit": # User wishes to return to menu
             break
 
+        elif userInput.lower() == "name" or userInput.lower() == "quantity":
+            itemName = input("Which item would you like to edit?\n")
+            itemExists = False
+            updated = False
 
-        # User types invalid option                         
+            for location in sites: # Check if item exists
+                for item in location.getSiteInventory():
+                    if item.name().lower() == itemName.lower():
+                        itemExists = True
+
+
+                        if userInput.lower() == "name": # User wishes to change item name
+                            newName = input("What is the desired new name of " + itemName.lower() + "\n")
+
+                            for site in sites: # Changes item name across all sites
+                                for obj in site.getSiteInventory():
+                                    if obj.name().lower() == itemName.lower():
+                                        item.setName(newName)
+                                        updated = True
+                            print(itemName.lower() + " shall now be called " + newName + "\n")
+                          
+
+
+                        elif userInput.lower() == "quantity": # User wishes to change item quantity
+                            site = input("Which site would you like to adjust quantity of " + itemName + "?\n")
+                            siteExists = False
+
+                            for warehouse in sites: # Check if site exists
+                                if site.lower() == location.siteName().lower():
+                                    siteExists = True
+                                    siteItemExists = False
+                                    for inventory in warehouse.getSiteInventory(): # Checks if item exists at given site
+                                        if inventory.name().lower() == itemName.lower():
+                                            try: # Ensures user enters integer value
+                                                newQuantity = input("What is the desired quantity of " + itemName + "?\n")
+
+                                            except:
+                                                print("Invalid entry. Please enter an integer value. \n")
+
+                                            else: # Change the quatnity of the item at given site
+                                                siteItemExists = True
+                                                inventory.adjustQuantity(newQuantity)
+                                                print(warehouse.siteName() + " now has " + newQuantity + " " + itemName + "\n")
+                                            break
+
+                                    if not siteItemExists:
+                                        print("No such item exists at this site.")
+
+                            if not siteExists:
+                                print("No such site exists.")
+
+                        else:
+                            print("Invalid option, try again.\n")
+                
+                if updated:
+                    break  
+                                    
+            if not itemExists:
+                print("No such item exists.")          
+        
         else:
-            print("Invalid entry. Please try again. \n")
+            print("Invalid option, try again.")
 
-        break # Return to menu
-
+        
+    
 # Runs code
 main()
