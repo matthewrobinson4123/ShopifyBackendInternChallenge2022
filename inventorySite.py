@@ -29,7 +29,7 @@ class InventorySite:
     def removeItemFromInventory(self, item):
         newList = []
         for obj in self._inventoryList:
-            if item != obj.name:
+            if item.lower() != obj.name().lower():
                 newList.append(obj)
         self._inventoryList = newList
 

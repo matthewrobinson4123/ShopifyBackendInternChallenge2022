@@ -216,14 +216,22 @@ def delete():
 
         userInput = input("Which item would you like to delete? of EXIT\n")
 
-        if userInput.lower() == "exit":
+        if userInput.lower() == "exit":# User wishes to return to menu
             break
 
         else:
-            for site in sites:
+            for site in sites: # Loop through sites and delete item
                 site.removeItemFromInventory(userInput)
             print(userInput + " no longer exists at any inventory site.")
             break
+
+
+
+
+
+
+#def view():
+ #   while(True):
 
     
 # Runs code
