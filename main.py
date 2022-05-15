@@ -110,15 +110,28 @@ def create():
                 else:
                     added = False
                     while(not added):
+                        siteValid = False
                         site = input("Please enter the site in which you wish to add this inventory item. \n") 
 
                         for location in sites:
                             if site.lower() == location.siteName().lower(): # Checks to see if site exists
-                                location.addToInventory(InventoryItem(itemName, itemQuantity)) # Creates item with given name and quantity and adds it to specified site
-                                print(str(itemQuantity) + " \"" + itemName + "s\" have been added to " + location.siteName())
-                                createdItem = added = True
-                                break
-                            print("Invalid site.\n")
+                                alreadyExists = False
+                                siteValid = True
+
+                                for siteItem in location.getSiteInventory():
+                                    if siteItem.name().lower() == itemName.lower(): # Checks if item already exists at site
+                                        print("Item already exists at site.")
+                                        alreadyExists = True
+                                        break
+
+                                if not alreadyExists: # Create only if item does't already exist
+                                    location.addToInventory(InventoryItem(itemName, itemQuantity)) # Creates item with given name and quantity and adds it to specified site
+                                    print(str(itemQuantity) + " \"" + itemName + "s\" have been added to " + location.siteName())
+                                    createdItem = added = True
+                                    break
+
+                            if not siteValid:
+                                print("Invalid site.\n")
 
 
         # User wishes to exit to menu
@@ -245,7 +258,7 @@ def view():
                 totalInventory.append(item)
 
     for item in totalInventory:
-        print("Item: " + item.name() + " Stock: " + str(item.quantity()) + "\n")
+        print("Item: " + item.name() + "; Stock: " + str(item.quantity()) + "\n")
 
 
     
