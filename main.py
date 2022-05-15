@@ -67,6 +67,7 @@ def handleInput(input):
 
 
 
+########### CREATE #############
 # Method to create either a new site or a new item and add it to a site
 def create():
     while(True): # Loops until user has created or exited
@@ -130,8 +131,8 @@ def create():
                                     createdItem = added = True
                                     break
 
-                            elif not siteValid:
-                                print("Invalid site.\n")
+                        if not siteValid:
+                            print("Invalid site.\n")
 
 
         # User wishes to exit to menu
@@ -146,7 +147,7 @@ def create():
     
 
 
-
+######### EDIT ################
 # Method allows user to edit name of site or item or quantity of item
 def edit():
     while(True):
@@ -201,8 +202,8 @@ def edit():
                                                 print(warehouse.siteName() + " now has " + newQuantity + " " + itemName + "\n")
                                             break
 
-                                    if not siteItemExists:
-                                        print("No such item exists at this site.")
+                                if not siteItemExists:
+                                    print("No such item exists at this site.")
 
                             if not siteExists:
                                 print("No such site exists.")
@@ -222,7 +223,7 @@ def edit():
         
 
 
-
+########## DELETE #############
 # Removes entered inventory item from all sites
 def delete():
     while(True):
@@ -241,23 +242,26 @@ def delete():
 
 
 
-
-
+######### VIEW ###########
+# Method that prints the total inventory across all sites to screen
 def view():
 
-    totalInventory = []
+    totalInventory = [] # List for all InventoryItem objects to be added to
+    inventoryNames = [] # Listfor all the item names for comparison purposes
 
     print("The following is the list of all inventory across all sites; \n")
     for location in sites:
         for item in location.getSiteInventory():
-            if item in totalInventory:
-                for totalItem in totalInventory:
+            if item.name().lower() in inventoryNames: # Checks if we've added the item already
+                for totalItem in totalInventory: # If we have then we will adjust the quantity by added this sites quantity to the total
                     if totalItem.name().lower() == item.name().lower():
                         totalItem.adjustQuantity(totalItem.quantity() + item.quantity())
-            else:
-                totalInventory.append(item)
 
-    for item in totalInventory:
+            else: # If the item hasn't been added yet add it to list
+                totalInventory.append(item)
+                inventoryNames.append(item.name().lower())
+
+    for item in totalInventory: # Print the inventory
         print("Item: " + item.name() + "; Stock: " + str(item.quantity()) + "\n")
 
 
