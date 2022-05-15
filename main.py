@@ -130,7 +130,7 @@ def create():
                                     createdItem = added = True
                                     break
 
-                            if not siteValid:
+                            elif not siteValid:
                                 print("Invalid site.\n")
 
 
@@ -173,7 +173,7 @@ def edit():
                             for site in sites: # Changes item name across all sites
                                 for obj in site.getSiteInventory():
                                     if obj.name().lower() == itemName.lower():
-                                        item.setName(newName)
+                                        obj.setName(newName)
                                         updated = True
                             print(itemName.lower() + " shall now be called " + newName + "\n")
                           
