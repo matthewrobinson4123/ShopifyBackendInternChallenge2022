@@ -230,8 +230,23 @@ def delete():
 
 
 
-#def view():
- #   while(True):
+def view():
+
+    totalInventory = []
+
+    print("The following is the list of all inventory across all sites; \n")
+    for location in sites:
+        for item in location.getSiteInventory():
+            if item in totalInventory:
+                for totalItem in totalInventory:
+                    if totalItem.name().lower() == item.name().lower():
+                        totalItem.adjustQuantity(totalItem.quantity() + item.quantity())
+            else:
+                totalInventory.append(item)
+
+    for item in totalInventory:
+        print("Item: " + item.name() + " Stock: " + str(item.quantity()) + "\n")
+
 
     
 # Runs code
