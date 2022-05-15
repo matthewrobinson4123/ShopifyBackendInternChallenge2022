@@ -27,22 +27,20 @@ def main():
     print("\nHello! Welcome to Geek Emporium!\n")
     print("What are your logistical desires today? Please select from the following: \n")
 
-    userInput = input("CREATE;      create an item or inventory site. \n"
-            "EDIT;      edit item name or quantity or change site name. \n"
-            "DELETE;        remove an item or site from system WARNING deleting a site deletes all of its inventory. \n"
+    userInput = input("CREATE;      create an item and assign it to an inventory site or create an inventory site. \n"
+            "EDIT;      edit item name or quantity. \n"
+            "DELETE;        remove an item from system WARNING deleting an item deletes all of its inventory from all sites. \n"
             "VIEW;      view inventory for specified site or for all sites. \n"
-            "TRANSFER;      transfer items from one site to another. \n"
             "EXIT;      exit from the system.\n")
 
     while (userInput.lower() != "exit"):
         handleInput(userInput.lower())
 
         userInput = input("Please select from the following: \n\n"
-            "CREATE;      create an item or inventory site. \n"
-            "EDIT;      edit item name or quantity or change site name. \n"
-            "DELETE;        remove an item or site from system WARNING deleting a site deletes all of its inventory. \n"
+            "CREATE;      create an item and assign it to an inventory site or create an inventory site. \n"
+            "EDIT;      edit item name or quantity. \n"
+            "DELETE;        remove an item from system WARNING deleting an item deletes all of its inventory from all sites. \n"
             "VIEW;      view inventory for specified site or for all sites. \n"
-            "TRANSFER;      transfer items from one site to another. \n"
             "EXIT;      exit from the system.\n")
 
     print("Thank you for using Geek Emporium, have a nerdy day!") # User exited
@@ -55,17 +53,14 @@ def handleInput(input):
     if input == "create": # User wishes to create item/site
         create()
 
-    elif input == "edit": # User wishes to edit item/site
+    elif input == "edit": # User wishes to edit item
         edit()
 
-    elif input == "delete": # User wishes to delete item/site
+    elif input == "delete": # User wishes to delete item
         delete()
 
     elif input == "view": # User wishes to view inventory
         view()
-
-    elif input == "transfer": # User wishes to transfer inventory
-        transfer()
     
     else:   # User entered invalid option
         print("Invalid selection, please try again. \n")
@@ -140,11 +135,27 @@ def create():
 
 
 
+# Method allows user to edit name of site or item or quantity of item
+def edit():
+    while(True):
+
+        userInput = input("Would you like to edit a SITE or ITEM? or EXIT \n")
+
+        # User wishes to edit site
+        if userInput.lower() == "site":
 
 
 
+        # User wishes to exit to menu
+        elif userInput.lower() == "exit":
+            break
 
 
+        # User types invalid option                         
+        else:
+            print("Invalid entry. Please try again. \n")
+
+        break # Return to menu
 
 # Runs code
 main()
