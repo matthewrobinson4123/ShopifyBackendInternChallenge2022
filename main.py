@@ -13,10 +13,10 @@ from inventorySite import InventorySite
 # sample items to test with
 inventory = [InventoryItem("Warhammer Space Marines", 42), InventoryItem("Lego Star Destroyer", 5), InventoryItem("Settlers of Catan", 16)]
 
-# Inistialize system
+# Inistialize system with an initial site
 sites = [InventorySite("Geekdom")]
 for item in inventory:
-    sites[0].addToInventory(item)
+    sites[0].addToInventory(item) # Add sample items to initial site
 
 
 
@@ -33,7 +33,7 @@ def main():
             "VIEW;      view inventory for specified site or for all sites. \n"
             "EXIT;      exit from the system.\n")
 
-    while (userInput.lower() != "exit"):
+    while (userInput.lower() != "exit"): # Reprint menu until user wishes to leave
         handleInput(userInput.lower())
 
         userInput = input("Please select from the following: \n\n"
@@ -148,7 +148,7 @@ def create():
 
 
 ######### EDIT ################
-# Method allows user to edit name of site or item or quantity of item
+# Method allows user to edit name of site/item or quantity of item
 def edit():
     while(True):
 
