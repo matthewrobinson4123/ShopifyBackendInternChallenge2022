@@ -25,6 +25,15 @@ class InventorySite:
         self._inventoryList.sort(key=lambda item: item._name) # sorts list to alphabetic order
 
 
+    # Removes item from inventory
+    def removeItemFromInventory(self, item):
+        newList = []
+        for obj in self._inventoryList:
+            if item != obj.name:
+                newList.append(obj)
+        self._inventoryList = newList
+
+
     # Returns site inventory list
     def getSiteInventory(self):
         return self._inventoryList

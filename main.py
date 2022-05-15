@@ -207,6 +207,24 @@ def edit():
             print("Invalid option, try again.")
 
         
+
+
+
+# Removes entered inventory item from all sites
+def delete():
+    while(True):
+
+        userInput = input("Which item would you like to delete? of EXIT\n")
+
+        if userInput.lower() == "exit":
+            break
+
+        else:
+            for site in sites:
+                site.removeItemFromInventory(userInput)
+            print(userInput + " no longer exists at any inventory site.")
+            break
+
     
 # Runs code
 main()
