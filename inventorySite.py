@@ -31,7 +31,7 @@ class InventorySite:
         for obj in self._inventoryList:
             if item.lower() != obj.name().lower():
                 newList.append(obj)
-        self._inventoryList = newList
+        self._inventoryList = newList # Sets inventory list to new list without deleted item
 
 
     # Returns site inventory list
